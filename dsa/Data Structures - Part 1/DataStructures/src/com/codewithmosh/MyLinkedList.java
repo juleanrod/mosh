@@ -51,6 +51,16 @@ public class MyLinkedList<T> {
         this.size++;
     }
 
+    public void deleteFirst() {
+        if(this.size <= 0) return;
+        if(this.size == 1) {
+            this.head = null;
+            this.size--;
+        }
+        this.head = this.head.next;
+        this.size--;
+    }
+
     public void print() {
         ArrayList<T> list = new ArrayList<>();
         Node reference = this.head;
