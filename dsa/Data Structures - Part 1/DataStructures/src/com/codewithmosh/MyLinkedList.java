@@ -101,27 +101,30 @@ public class MyLinkedList<T> {
 
     @SuppressWarnings("unchecked")
     public Object[] toArray() {
-        Object[] array = new Object[this.size];
+        ArrayList<T> list = new ArrayList<>();
         Node current = this.head;
         int index = 0;
         while(current != null) {
-            array[index++] = current.val;
+            list.add(current.val);
             current = current.next;
         }
-        return array;
+        Object[] arr = new Object[this.size];
+        arr = list.toArray(arr);
+        return arr;
     }
 
-    public void print() {
-        ArrayList<T> list = new ArrayList<>();
-        Node reference = this.head;
-        if (this.size == 0) {
-            System.out.println("[]");
+    public void reverse() {
+        Node previous = this.head;
+        Node current = this.head.next;
+
+        this.tail = this.head;
+        this.tail.next = null;
+        while(current != null) {
+            Node next = current.next;
+            current.next = previous;
+            previous = current; 
+            current = next;
         }
-        for (int i = 0; i < this.size; i++) {
-            list.add(reference.val);
-            reference = reference.next;
-        }
-        System.out.println(list);
+        this.head = previous;
     }
-    
 }
