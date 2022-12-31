@@ -1,5 +1,6 @@
 package com.codewithmosh;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class MyLinkedList<T> {
     private class Node {
@@ -34,8 +35,7 @@ public class MyLinkedList<T> {
         Node newNode = new Node(value);
         // check if the head is null
         if(head == null) {
-            this.head = newNode;
-            this.tail = this.head;
+            this.head = this.tail = newNode;
             this.size++;
             return;
         }
@@ -54,7 +54,7 @@ public class MyLinkedList<T> {
     public void deleteFirst() {
         if(this.size <= 0) return;
         if(this.size == 1) {
-            this.head = null;
+            this.head = this.tail = null;
             this.size--;
         }
         this.head = this.head.next;
@@ -62,16 +62,18 @@ public class MyLinkedList<T> {
     }
 
     public void deleteLast() {
-        if(this.size <= 0) return;
-        if(this.size == 1) {
-            this.head = null;
+        if(this.size <= 0) 
+            throw new NoSuchElementException();
+        if(this.head == this.tail) {
+            this.head = this.tail = null;
             this.size--;
+            return;
         }
-        Node newTail = this.head;
-        for(int i = 0; i < this.size - 1; i++) {
-            newTail = newTail.next;
+        Node current = this.head;
+        for (int i = 0; i < this.size - 1; i++) {
+            current = current.next;
         }
-        this.tail = newTail;
+        this.tail =  current.next;
         this.size--;
     }
 
@@ -95,6 +97,18 @@ public class MyLinkedList<T> {
 
     public int size() {
         return this.size;
+    }
+
+    @SuppressWarnings("unchecked")
+    public Object[] toArray() {
+        Object[] array = new Object[this.size];
+        Node current = this.head;
+        int index = 0;
+        while(current != null) {
+            array[index++] = current.val;
+            current = current.next;
+        }
+        return array;
     }
 
     public void print() {

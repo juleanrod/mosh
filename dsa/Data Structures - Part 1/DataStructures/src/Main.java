@@ -1,4 +1,5 @@
 import com.codewithmosh.MyLinkedList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] names) {
@@ -7,10 +8,14 @@ public class Main {
         list.addFirst(30);
         list.addLast(40);
         list.addLast(50);
+        System.out.println(list.size());
+        list.deleteFirst();
         list.deleteFirst();
         list.deleteLast();
+        list.print();
         System.out.println(list.contains(20));
         System.out.println(list.indexOf(30));
-        list.print();
+        System.out.println(Arrays.toString(list.toArray()));
+        // list.print();
     }
 }
