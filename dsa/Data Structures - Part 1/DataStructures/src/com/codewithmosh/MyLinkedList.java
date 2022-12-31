@@ -84,6 +84,15 @@ public class MyLinkedList<T> {
         return false;
     }
 
+    public int indexOf(T value) {
+        Node current = this.head;
+        for (int i = 0; i < this.size; i++) {
+            if (current.val == value) return i;
+            current = current.next;
+        }
+        return -1;
+    }
+
     public void print() {
         ArrayList<T> list = new ArrayList<>();
         Node reference = this.head;

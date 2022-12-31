@@ -10,6 +10,7 @@ public class Main {
         list.deleteFirst();
         list.deleteLast();
         System.out.println(list.contains(20));
+        System.out.println(list.indexOf(30));
         list.print();
     }
 }
