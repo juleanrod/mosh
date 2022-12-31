@@ -1,6 +1,7 @@
 package com.codewithmosh;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.lang.IllegalStateException;
 
 public class MyLinkedList<T> {
     private class Node {
@@ -126,5 +127,40 @@ public class MyLinkedList<T> {
             current = next;
         }
         this.head = previous;
+    }
+
+    public Object getKthFromTheEnd(int k) {
+        if(this.size() == 0) throw new IllegalStateException();
+        Node b = this.head;
+        Node a = this.head;
+        for(int i = 0; i < k; i++) {
+            b = b.next;
+            if(b == null)
+                throw new IllegalArgumentException();
+        }
+        while (b != null) {
+            a = a.next;
+            b = b.next;
+        }
+        return a.val;
+    }
+    
+    public void printMiddle() {
+        if(this.size == 0) return;
+
+        ArrayList<T> al = new ArrayList<>();
+        boolean odd = this.size % 2 != 0;
+        int targetIdx = this.size / 2;
+        Node current = this.head;
+        for(int i = 0; i <= targetIdx; i++) {
+            if(odd && i == targetIdx) {
+                current = current.next;
+                System.out.printf("[%s]\n", current.val);
+            }
+            if(!odd && i == targetIdx) {
+                current = current.next;
+                System.out.printf("\n[%s, %s]", current.val, current.next.val);
+            }
+        }
     }
 }
