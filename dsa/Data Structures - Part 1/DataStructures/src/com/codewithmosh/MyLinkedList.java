@@ -75,6 +75,15 @@ public class MyLinkedList<T> {
         this.size--;
     }
 
+    public boolean contains(T value) {
+        Node current = this.head;
+        for (int i = 0; i < this.size; i++) {
+            if (current.val == value) return true;
+            current = current.next;
+        }
+        return false;
+    }
+
     public void print() {
         ArrayList<T> list = new ArrayList<>();
         Node reference = this.head;
