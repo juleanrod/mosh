@@ -93,6 +93,10 @@ public class MyLinkedList<T> {
         return -1;
     }
 
+    public int size() {
+        return this.size;
+    }
+
     public void print() {
         ArrayList<T> list = new ArrayList<>();
         Node reference = this.head;
