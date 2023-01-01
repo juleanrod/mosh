@@ -170,8 +170,8 @@ public class MyLinkedList<T> {
         while (b != this.tail && b.next != this.tail) {
             b = b.next.next;
             a = a.next;
+            if (a == b) return true;
         }
-        if (a == b) return true;
 
         return false;
     }
