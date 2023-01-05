@@ -1,5 +1,5 @@
 import java.util.*;
-import com.codewithmosh.MyQueueReverser;
+import com.codewithmosh.*;
 
 public class Main {
     public static void main(String[] names) {
@@ -38,11 +38,47 @@ public class Main {
         //System.out.println(stack.isEmpty());
 
         // Reversing a Queue
-        Queue<Integer> queue = new ArrayDeque<>();
-        queue.add(10);
-        queue.add(20);
-        queue.add(30);
-        MyQueueReverser.reverse(queue);
+        //Queue<Integer> queue = new ArrayDeque<>();
+        //queue.add(10);
+        //queue.add(20);
+        //queue.add(30);
+        //MyQueueReverser.reverse(queue);
+        //System.out.println(queue.toString());
+
+        //ArrayQueue Implementation
+        //MyArrayQueue queue = new MyArrayQueue(5);
+        //queue.enqueue(10);
+        //queue.enqueue(20);
+        //queue.enqueue(30);
+        //queue.dequeue();
+        //System.out.println(queue.toString());
+        //var front = queue.dequeue();
+        //queue.enqueue(40);
+        //queue.enqueue(50);
+        //queue.enqueue(60);
+        //System.out.println(front);
+        //System.out.println(queue.toString());
+        //queue.enqueue(70);
+        //System.out.println(queue.toString());
+        //System.out.println(queue.isFull());
+
+        //QueueWithTwoStacks
+        //MyQueueWithTwoStacks<Integer> q = new MyQueueWithTwoStacks<>();
+        //q.enqueue(10);
+        //q.enqueue(20);
+        //q.enqueue(30);
+        //System.out.println(q);
+        //q.dequeue();
+        //System.out.println(q);
+        //q.enqueue(40);
+        //System.out.println(q);
+
+        //PriorityQueue
+        MyPriorityQueue queue = new MyPriorityQueue(5);
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
         System.out.println(queue.toString());
+
     }
 }
