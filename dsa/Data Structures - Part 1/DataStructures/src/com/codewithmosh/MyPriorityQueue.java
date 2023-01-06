@@ -24,6 +24,14 @@ public class MyPriorityQueue {
         return this.count == this.items.length;
     }
 
+    public boolean isEmpty() {
+        return this.count == 0;
+    }
+
+    public int remove() {
+        return this.items[--this.count];
+    }
+
     private void addToQueue(int item) {
         int i;
         for(i = this.count - 1; i >= 0; i--) {
@@ -38,6 +46,10 @@ public class MyPriorityQueue {
 
     @Override
     public String toString() {
-        return Arrays.toString(this.items);
+        int[] temp = new int[this.count];
+        for(int i = 0; i < temp.length; i++) {
+            temp[i] = this.items[i];
+        }
+        return Arrays.toString(temp);
     }
 }

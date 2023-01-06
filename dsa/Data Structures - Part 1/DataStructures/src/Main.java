@@ -75,9 +75,10 @@ public class Main {
 
         //PriorityQueue
         MyPriorityQueue queue = new MyPriorityQueue(5);
-        queue.add(1);
+        queue.add(5);
         queue.add(2);
         queue.add(3);
+        queue.remove();
         System.out.println(queue.toString());
 
     }
