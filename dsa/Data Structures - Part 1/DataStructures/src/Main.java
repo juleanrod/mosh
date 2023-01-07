@@ -38,14 +38,14 @@ public class Main {
         //System.out.println(stack.isEmpty());
 
         // Reversing a Queue
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        queue.add(10);
-        queue.add(20);
-        queue.add(30);
-        queue.add(40);
-        queue.add(50);
-        MyQueueReverser.reverse(queue, 3);
-        System.out.println(queue.toString());
+        //ArrayDeque<Integer> queue = new ArrayDeque<>();
+        //queue.add(10);
+        //queue.add(20);
+        //queue.add(30);
+        //queue.add(40);
+        //queue.add(50);
+        //MyQueueReverser.reverse(queue, 3);
+        //System.out.println(queue.toString());
 
         //ArrayQueue Implementation
         //MyArrayQueue queue = new MyArrayQueue(5);
@@ -82,6 +82,18 @@ public class Main {
         //queue.add(3);
         //queue.remove();
         //System.out.println(queue.toString());
+
+        //LinkedListQueue
+        MyLinkedListQueue<Integer> llq = new MyLinkedListQueue<>();
+        llq.enqueue(10);
+        llq.enqueue(20);
+        llq.enqueue(30);
+        System.out.println(llq.toString());
+        llq.dequeue();
+        llq.dequeue();
+        System.out.println(llq.toString());
+        System.out.println(llq.peek());
+        System.out.println(llq.size());
 
     }
 }

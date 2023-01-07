@@ -1,6 +1,4 @@
 package com.codewithmosh;
-import java.util.Queue;
-import java.util.Deque;
 import java.util.Stack;
 import java.util.ArrayDeque;
 
