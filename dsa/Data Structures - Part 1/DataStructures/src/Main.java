@@ -24,9 +24,9 @@ public class Main {
         //String input = "julian";
         //StringBuffer inputReversed = new StringBuffer();
         //for(char ch : input.toCharArray())
-            //stack.push(ch);
+        //stack.push(ch);
         //while(!stack.empty())
-            //inputReversed.append(stack.pop());
+        //inputReversed.append(stack.pop());
         //System.out.println(inputReversed);
         //boolean result = BalanceChecker.isBalanced("(3+2(3/4))<>");
         //System.out.println(result);
