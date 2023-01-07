@@ -84,16 +84,24 @@ public class Main {
         //System.out.println(queue.toString());
 
         //LinkedListQueue
-        MyLinkedListQueue<Integer> llq = new MyLinkedListQueue<>();
-        llq.enqueue(10);
-        llq.enqueue(20);
-        llq.enqueue(30);
-        System.out.println(llq.toString());
-        llq.dequeue();
-        llq.dequeue();
-        System.out.println(llq.toString());
-        System.out.println(llq.peek());
-        System.out.println(llq.size());
+        //MyLinkedListQueue<Integer> llq = new MyLinkedListQueue<>();
+        //llq.enqueue(10);
+        //llq.enqueue(20);
+        //llq.enqueue(30);
+        //System.out.println(llq.toString());
+        //llq.dequeue();
+        //llq.dequeue();
+        //System.out.println(llq.toString());
+        //System.out.println(llq.peek());
+        //System.out.println(llq.size());
+
+        //StackWithTwoQueues
+        MyStackWithTwoQueues<Integer> stack = new MyStackWithTwoQueues<>();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        System.out.println(stack.toString());
 
     }
 }
