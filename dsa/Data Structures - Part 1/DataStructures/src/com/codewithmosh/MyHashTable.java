@@ -7,33 +7,24 @@ import javax.swing.text.html.parser.Entity;
 import java.lang.StringBuilder;
 import java.util.Iterator;
 
-public class MyHashTable<I, S> {
+public class MyHashTable<K, V> {
 
     private LinkedList<Entry>[] buckets;
     private int CAPACITY = 5;
-    private int count;
 
     private class Entry {
-        private I key;
-        private S val;
+        public K key;
+        public V val;
 
-        public Entry(I i, S s) {
-            this.key = i;
-            this.val = s;
-        }
-
-        public I getKey() {
-            return this.key;
-        }
-
-        public S getValue() {
-            return this.val;
+        public Entry(K k, V v) {
+            this.key = k;
+            this.val = v;
         }
 
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
-            sb.append(String.format("{%s: %s}", (getKey()), getValue()));
+            sb.append(String.format("{%s: %s}", (this.key), (this.val)));
             return sb.toString(); 
         }
     }
@@ -41,66 +32,57 @@ public class MyHashTable<I, S> {
     @SuppressWarnings("unchecked")
     public MyHashTable() {
         this.buckets = new LinkedList[CAPACITY]; 
-        this.count = 0;
     }
 
-    public void put(I key, S val) {
-        int idx = this.hash(key);
+    public void put(K key, V val) {
+        var entry = getEntry(key);
+        if(entry != null)
+            entry.val = val;
 
-        Entry entry = new Entry(key, val);
-
-        if(buckets[idx] == null) {
-            buckets[idx] = new LinkedList<Entry>();
-        } 
-        if(validKey(key)) {
-            buckets[idx].add(entry);
-            count++;
-        } else {
-            throw new IllegalArgumentException();
-        }
-
+        var bucket = getOrCreateBucket(key);
+        bucket.addLast(new Entry(key, val));
     }
 
-    public S get(I key) {
-        int idx = hash(key);
-        LinkedList<Entry> bucket = buckets[idx];
-        int llidx = 0;
-        Entry entry = bucket.element();
-        while(llidx < bucket.size()) {
-            entry = bucket.get(llidx);
-            if(entry.getKey() == key)
-                break;
-            llidx++;
+    public V get(K key) {
+        var entry = getEntry(key);
 
-        }
-        return entry.getValue();
+        return (entry == null) ? null : entry.val;
     }
 
-    public void remove(I key) {
-        int idx = this.hash(key);
-        ListIterator<Entry> it = this.buckets[idx].listIterator();
-        while(it.hasNext()){
-            if(it.next().getKey() == key) {
-                it.remove();
+    public void remove(K key) {
+        var entry = getEntry(key);
+        if(entry == null)
+            throw new IllegalStateException();
+        getBucket(key).remove(entry);
+    }
+
+    private LinkedList<Entry> getBucket(K key) {
+        return buckets[hash(key)];
+    }
+
+    private Entry getEntry(K key) {
+        var bucket = getBucket(key);
+        if(bucket != null) {
+            for(var entry : bucket) {
+                if(entry.key == key)
+                    return entry;
             }
         }
+
+        return null;
     }
 
-    private int hash(I key) {
-        int res = (int)key % this.CAPACITY;
-        return res;
+    private LinkedList<Entry> getOrCreateBucket(K key) {
+        var idx = hash(key);
+        var bucket = buckets[idx];
+        if(bucket == null)
+            buckets[idx] = new LinkedList<Entry>();
+
+        return buckets[idx];
     }
 
-    private boolean validKey(I key) {
-        int idx = this.hash(key);
-        if(this.buckets[idx] == null)
-            throw new IllegalArgumentException();
-        Iterator<MyHashTable<I, S>.Entry> it = buckets[idx].iterator();
-        while(it.hasNext()) {
-            if(it.next().getKey() == key) 
-                return false;
-        }
-        return true; 
+    private int hash(K key) {
+        return (int)key % this.CAPACITY;
     }
 
     @Override
