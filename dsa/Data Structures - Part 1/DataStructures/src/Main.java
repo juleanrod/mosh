@@ -96,12 +96,22 @@ public class Main {
         //System.out.println(llq.size());
 
         //StackWithTwoQueues
-        MyStackWithTwoQueues<Integer> stack = new MyStackWithTwoQueues<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-        stack.push(40);
-        System.out.println(stack.toString());
+        //MyStackWithTwoQueues<Integer> stack = new MyStackWithTwoQueues<>();
+        //stack.push(10);
+        //stack.push(20);
+        //stack.push(30);
+        //stack.push(40);
+        //System.out.println(stack.toString());
+
+        //HashTable
+        MyHashTable<Integer, String> ht = new MyHashTable<>();
+        ht.put(20, "julian");
+        ht.put(20, "kevin");
+        ht.put(12, "carla");
+        ht.put(14, "danna");
+        String key10 = ht.get(Integer.valueOf(20));
+        System.out.println(key10);
+        System.out.println(ht);
 
     }
 }
