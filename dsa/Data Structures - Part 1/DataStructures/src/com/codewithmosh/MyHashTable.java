@@ -1,5 +1,6 @@
 package com.codewithmosh;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.swing.text.html.parser.Entity;
 
@@ -73,6 +74,16 @@ public class MyHashTable<I, S> {
 
         }
         return entry.getValue();
+    }
+
+    public void remove(I key) {
+        int idx = this.hash(key);
+        ListIterator<Entry> it = this.buckets[idx].listIterator();
+        while(it.hasNext()){
+            if(it.next().getKey() == key) {
+                it.remove();
+            }
+        }
     }
 
     private int hash(I key) {
