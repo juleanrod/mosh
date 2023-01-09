@@ -104,19 +104,27 @@ public class Main {
         //System.out.println(stack.toString());
 
         //HashTable
-        MyHashTable<Integer, String> ht = new MyHashTable<>();
-        ht.put(20, "julian");
-        ht.put(21, "kevin");
-        ht.put(12, "carla");
-        ht.put(14, "danna");
-        String key10 = ht.get(Integer.valueOf(20));
-        System.out.println(key10);
-        System.out.println(ht);
-        ht.remove(21);
-        System.out.println(ht);
-        ht.put(31, "samantha");
-        System.out.println(ht);
-        System.out.println("");
+        //MyHashTable<Integer, String> ht = new MyHashTable<>();
+        //ht.put(20, "julian");
+        //ht.put(21, "kevin");
+        //ht.put(12, "carla");
+        //ht.put(14, "danna");
+        //String key10 = ht.get(Integer.valueOf(20));
+        //System.out.println(key10);
+        //System.out.println(ht);
+        //ht.remove(21);
+        //System.out.println(ht);
+        //ht.put(31, "samantha");
+        //System.out.println(ht);
+        //System.out.println("");
+
+
+        //MyHashTableExercises
+        int pairs = MyHashTableExercises.countPairsWithDiff(new int[]{1, 7, 5, 9, 2, 12, 3}, 3);
+        System.out.println(pairs);
+
+        int[] twoSum = MyHashTableExercises.twoSum(new int[]{2, 7, 11, 15}, 9);
+        System.out.println(Arrays.toString(twoSum));
 
 
     }
