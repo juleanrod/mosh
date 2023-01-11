@@ -16,5 +16,14 @@ public class Main {
 
         //bt.traversePreOrder();
         System.out.println(bt.height());
+        System.out.println(bt.min());
+        System.out.println(bt.getLeafCount());
+        System.out.println(bt.max());
+        //bt.insert(100);
+        System.out.println(bt.max());
+        System.out.println(bt.contains(20));
+        System.out.println(bt.areSiblings(3, 8));
+        System.out.println(bt.getAncestors(20));
+
     }
 }
