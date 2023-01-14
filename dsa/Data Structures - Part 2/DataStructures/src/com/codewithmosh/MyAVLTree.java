@@ -18,9 +18,27 @@ public class MyAVLTree {
     }
 
     private AVLnode root;
+    private int size = 0;
 
     public void insert(int value) {
         root = insert(root, value);
+        this.size++;
+    }
+
+    public boolean isPerfect() {
+        int perfect = (int) (Math.pow((height(root) + 1), 2) - 1); 
+        return perfect == this.size; 
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public boolean isBalanced() {
+        int balanceFactor = balanceFactor(root);
+        if(balanceFactor == 1 || balanceFactor == 0 || balanceFactor == -1)
+            return true;
+        return false;
     }
 
     private AVLnode insert(AVLnode root, int value) {
